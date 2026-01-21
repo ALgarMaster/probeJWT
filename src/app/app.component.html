@@ -10,14 +10,8 @@
       </div>
       <div class="form-group">
         <label for="password">Пароль:</label>
-        <input
-          id="password"
-          type="password"
-          [(ngModel)]="password"
-          name="password"
-          placeholder="Введите пароль"
-          required
-        />
+        <input id="password" type="password" [(ngModel)]="password" name="password" placeholder="Введите пароль"
+          required />
       </div>
       <div class="form-group">
         <label for="message">Сообщение:</label>
@@ -26,13 +20,8 @@
       <div class="form-group">
         <label for="secret">Секрет:</label>
         <div class="input-row">
-          <textarea
-            id="jwtToken"
-            [(ngModel)]="jwtToken"
-            name="jwtToken"
-            placeholder="Введите секрет для подписи токена"
-            required
-          ></textarea>
+          <textarea id="jwtToken" [(ngModel)]="jwtToken" name="jwtToken" placeholder="Введите секрет для подписи токена"
+            required></textarea>
           <button type="button" (click)="randomGenerateToken()"><span class="icon">🔄</span> Генерация секрета</button>
         </div>
       </div>
@@ -49,12 +38,8 @@
     <h2>Декодировать JWT токен</h2>
     <div class="form-group">
       <label for="decode-token">Токен:</label>
-      <textarea
-        id="decode-token"
-        [(ngModel)]="token"
-        name="decodeToken"
-        placeholder="Вставьте JWT токен для декодирования"
-      ></textarea>
+      <textarea id="decode-token" [(ngModel)]="token" name="decodeToken"
+        placeholder="Вставьте JWT токен для декодирования"></textarea>
     </div>
     <button type="button" class="decode-button" (click)="decodeToken()">Декодировать токен</button>
 

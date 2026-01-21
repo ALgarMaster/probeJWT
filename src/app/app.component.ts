@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { defer, of, throwError } from 'rxjs';
+import { defer, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { SignJWT, jwtVerify } from 'jose';
 
