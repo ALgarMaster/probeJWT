@@ -1,0 +1,9 @@
+
+.angular
+node_modules/
+dist/
+src-tauri/target/
+**/*.lib
+**/*.exe
+**/*.dll
+**/*.wasm
