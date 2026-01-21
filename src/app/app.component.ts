@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { defer, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { SignJWT, jwtVerify } from 'jose';
@@ -9,10 +6,8 @@ import { SignJWT, jwtVerify } from 'jose';
 // Декоратор компонента приложения
 @Component({
   selector: 'app-root',
-  standalone: true, // Не нужно регистрировать ngModele
-  imports: [CommonModule, RouterOutlet, FormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   login = '';
@@ -22,6 +17,7 @@ export class AppComponent {
   jwtToken = '';
   decodedToken = '';
   errorMessage = '';
+  decodeTokenInput = '';
 
   // Кодирование токена, использовал RxJS
   encodeToken$() {
@@ -68,12 +64,12 @@ export class AppComponent {
     // В момент подписки, выполняется код
     return defer(async () => {
       // Если нет токена или JWT
-      if (!this.token || !this.jwtToken) {
+      if (!this.decodeTokenInput || !this.jwtToken) {
         throw new Error('Введите токен и секрет для декодирования');
       }
 
       const secret = new TextEncoder().encode(this.jwtToken);
-      const { payload } = await jwtVerify(this.token, secret, {
+      const { payload } = await jwtVerify(this.decodeTokenInput, secret, {
         algorithms: ['HS256'],
       });
 

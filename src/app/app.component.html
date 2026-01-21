@@ -38,7 +38,7 @@
     <h2>Декодировать JWT токен</h2>
     <div class="form-group">
       <label for="decode-token">Токен:</label>
-      <textarea id="decode-token" [(ngModel)]="token" name="decodeToken"
+      <textarea id="decode-token" [(ngModel)]="decodeTokenInput" name="decodeToken"
         placeholder="Вставьте JWT токен для декодирования"></textarea>
     </div>
     <button type="button" class="decode-button" (click)="decodeToken()">Декодировать токен</button>
