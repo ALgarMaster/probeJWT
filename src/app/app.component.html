@@ -3,24 +3,24 @@
 
   <div class="jwt-section">
     <h2>Создать JWT токен</h2>
-    <form class="jwt-form">
+    <form [formGroup]="encodeForm" class="jwt-form">
       <div class="form-group">
         <label for="login">Логин:</label>
-        <input id="login" type="text" [(ngModel)]="login" name="login" placeholder="Введите логин" required />
+        <input id="login" type="text" formControlName="login" name="login" placeholder="Введите логин" required />
       </div>
       <div class="form-group">
         <label for="password">Пароль:</label>
-        <input id="password" type="password" [(ngModel)]="password" name="password" placeholder="Введите пароль"
+        <input id="password" type="password" formControlName="password" name="password" placeholder="Введите пароль"
           required />
       </div>
       <div class="form-group">
         <label for="message">Сообщение:</label>
-        <textarea id="message" [(ngModel)]="message" name="message" placeholder="Введите сообщение" required></textarea>
+        <textarea id="message" formControlName="message" name="message" placeholder="Введите сообщение" required></textarea>
       </div>
       <div class="form-group">
         <label for="secret">Секрет:</label>
         <div class="input-row">
-          <textarea id="jwtToken" [(ngModel)]="jwtToken" name="jwtToken" placeholder="Введите секрет для подписи токена"
+          <textarea id="jwtToken" formControlName="jwtToken" name="jwtToken" placeholder="Введите секрет для подписи токена"
             required></textarea>
           <button type="button" (click)="randomGenerateToken()"><span class="icon">🔄</span> Генерация секрета</button>
         </div>
@@ -28,28 +28,28 @@
       <button type="button" (click)="encodeToken()">Кодирование</button>
     </form>
 
-    <div *ngIf="token" class="token-display">
+    <div *ngIf="decodeForm.value.token" class="token-display">
       <h3>Сгенерированный токен:</h3>
-      <textarea readonly [value]="token" class="token-output"></textarea>
+      <textarea readonly [value]="decodeForm.value.token" class="token-output"></textarea>
     </div>
   </div>
 
-  <div class="jwt-section">
+  <div class="jwt-section" [formGroup]="decodeForm">
     <h2>Декодировать JWT токен</h2>
     <div class="form-group">
       <label for="decode-token">Токен:</label>
-      <textarea id="decode-token" [(ngModel)]="token" name="decodeToken"
+      <textarea id="decode-token" formControlName="token" name="decodeToken"
         placeholder="Вставьте JWT токен для декодирования"></textarea>
     </div>
     <button type="button" class="decode-button" (click)="decodeToken()">Декодировать токен</button>
 
-    <div *ngIf="decodedToken" class="token-display">
+    <div *ngIf="decodeForm.value.decodedToken" class="token-display">
       <h3>Декодированные данные:</h3>
-      <pre class="decoded-output">{{ decodedToken }}</pre>
+      <pre class="decoded-output">{{ decodeForm.value.decodedToken }}</pre>
     </div>
   </div>
 
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
+  <div *ngIf="errorMessage.value" class="error-message">
+    {{ errorMessage.value }}
   </div>
 </main>
