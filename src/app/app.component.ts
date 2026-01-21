@@ -36,7 +36,7 @@ export class AppComponent {
       const exp = Math.floor(Date.now() / 1000) + 24 * 60 * 60;
 
       // Кодируем токен на основании полученных полей
-      return new SignJWT({
+      return await new SignJWT({
         login: this.login,
         password: this.password,
         message: this.message,
@@ -78,7 +78,7 @@ export class AppComponent {
       });
 
       // Передаем дальше нагрузку
-      return payload;
+      return await payload;
     }).pipe(
       tap((payload) => {
         // Декодирую на основании полученных данных
