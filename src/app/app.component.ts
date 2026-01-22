@@ -89,7 +89,7 @@ export class AppComponent {
       });
 
       // Передаем дальше нагрузку
-      return await payload;
+      return payload;
     }).pipe(
       tap((payload) => {
         // Декодирую на основании полученных данных
