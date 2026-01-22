@@ -12,7 +12,7 @@ import { SignJWT, jwtVerify } from 'jose';
   standalone: true, // Не нужно регистрировать ngModele
   imports: [CommonModule, RouterOutlet, ReactiveFormsModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   encodeForm = new FormGroup({
